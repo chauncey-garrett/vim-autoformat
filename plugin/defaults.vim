@@ -281,10 +281,16 @@ if !exists('g:formatdef_eslint_local')
         let l:prog = s:NodeJsFindPathToExecFile('eslint')
 
         "initial
-        let l:cfg = findfile('.eslintrc.js', l:path.";")
+        let l:cfg = findfile('eslint.config.js', l:path.";")
 
         if empty(l:cfg)
             let l:cfg_fallbacks = [
+                        \'eslint.config.mjs',
+                        \'eslint.config.cjs',
+                        \'eslint.config.ts',
+                        \'eslint.config.mts',
+                        \'eslint.config.cts',
+                        \'.eslintrc.js',
                         \'.eslintrc.yaml',
                         \'.eslintrc.yml',
                         \'.eslintrc.json',
